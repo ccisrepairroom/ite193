@@ -26,6 +26,17 @@ class UserSeeder extends Seeder
             'name' => 'admin',
             'guard_name' => 'web',
         ]);
+        $vendorRole = Role::firstOrCreate([
+            'id' => 3, 
+            'name' => 'vendor',
+            'guard_name' => 'web',
+        ]);
+
+        $customerRole = Role::firstOrCreate([
+            'id' => 4, 
+            'name' => 'customer',
+            'guard_name' => 'web',
+        ]);
 
         // Create SuperAdmin user
         $superAdmin = User::create([
