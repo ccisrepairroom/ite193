@@ -116,9 +116,11 @@ class UserResource extends Resource
                 TextColumn::make('name')
                     ->searchable()
                     ->sortable()
+                    ->toggleable()
                     ->weight('bold'),
                 TextColumn::make('email')
                     ->searchable()
+                    ->toggleable()
                     ->sortable(),
                 TextColumn::make('role_id')
                     ->label('Role')
@@ -130,16 +132,20 @@ class UserResource extends Resource
                         default => 'Unknown',
                     })
                     ->badge()
+                    ->toggleable()
                     ->sortable(),
                 TextColumn::make('contact_number')
                     ->searchable()
+                    ->toggleable()
                     ->sortable(),
                 IconColumn::make('is_frequent_shopper')
                     ->icon(fn($state) => $state ? 'heroicon-o-check' : 'heroicon-o-x-circle')
                     ->color(fn($state) => $state ? 'success' : 'danger')
+                    ->toggleable()
                     ->sortable(),
                 TextColumn::make('created_at')
                     ->dateTime()
+                    ->toggleable()
                     ->sortable(),
             ])
             ->filters([
