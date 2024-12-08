@@ -82,12 +82,19 @@ class ProductTypeResource extends Resource
                 //
             ])
             ->actions([
+                Tables\Actions\ViewAction::make()
+                ->color('warning'),
                 Tables\Actions\EditAction::make(),
+                //->slideOver(),
+                DeleteAction::make()
+                ->successNotificationTitle('User deleted'),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                BulkAction::make('delete')
+                ->action(fn($records) => $records->each->delete())
+                ->requiresConfirmation()
+                ->color('danger')
+                ->label('Delete Selected'),
             ]);
     }
 

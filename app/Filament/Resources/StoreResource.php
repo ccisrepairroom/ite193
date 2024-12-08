@@ -126,10 +126,11 @@ class StoreResource extends Resource
                 ->successNotificationTitle('Store deleted'),
             ])
             ->bulkActions([
-                BulkAction::make('delete')   
+                BulkAction::make('delete')
                 ->action(fn($records) => $records->each->delete())
                 ->requiresConfirmation()
-                ->label('Delete Selected'),                 
+                ->color('danger')
+                ->label('Delete Selected'),                
             ]);
             
     }

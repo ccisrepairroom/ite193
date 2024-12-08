@@ -126,9 +126,11 @@ class VendorResource extends Resource
                 ->successNotificationTitle('Vendor deleted'),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                BulkAction::make('delete')
+                ->action(fn($records) => $records->each->delete())
+                ->requiresConfirmation()
+                ->color('danger')
+                ->label('Delete Selected'),
             ]);
     }
 
