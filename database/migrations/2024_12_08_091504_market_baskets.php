@@ -15,12 +15,13 @@ return new class extends Migration
             $table->id();
             $table->decimal('total_amount',8,2)->index('market_basket_total_amount')->nullable()->onDelete('cascade');
             $table->dateTime('purchase_date')->index('market_basket_purchase_date')->nullable()->onDelete('cascade');
-            $table->timestamps();
 
             $table->unsignedBigInteger('user_id')->nullable()->index('market_basket_user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('store_id')->nullable()->index('market_basket_store_id');
             $table->foreign('store_id')->references('id')->on('stores')->onDelete('cascade');
+            $table->timestamps();
+
         });
     }
 

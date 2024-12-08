@@ -15,12 +15,14 @@ return new class extends Migration
             $table->id();
             $table->dateTime('shipment_date')->index('shipment_shipment_date')->nullable()->onDelete('cascade');
             $table->dateTime('delivery_date')->index('shipment_delivery_date')->nullable()->onDelete('cascade');
-            $table->timestamps();
 
             $table->unsignedBigInteger('vendor_id')->nullable()->index('shipment_vendor_id');
             $table->foreign('vendor_id')->references('id')->on('vendors')->onDelete('cascade');
             $table->unsignedBigInteger('reorder_request_id')->nullable()->index('shipment_reorder_request_id');
             $table->foreign('reorder_request_id')->references('id')->on('reorder_requests')->onDelete('cascade');
+            $table->timestamps();
+
+
         });
     }
 

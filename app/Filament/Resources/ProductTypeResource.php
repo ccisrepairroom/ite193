@@ -37,20 +37,46 @@ class ProductTypeResource extends Resource
     protected static ?int $navigationSort = 5;
     protected static ?string $pollingInterval = '1s';
     protected static bool $isLazy = false;
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
+    }
+
+    public static function getGlobalSearchResultDetails(Model $record): array
+    {
+        return [
+            'Name' => $record->name ?? 'Unknown',
+        ];
+    }
+
+    public static function getGloballySearchableAttributes(): array
+    {
+        return ['name'];
+    }
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                //
+                TextInput::make('name')
+                        ->required()
+                        ->maxLength(255)
+                        ->placeholder('Eg., Cola'),
             ]);
     }
 
     public static function table(Table $table): Table
     {
         return $table
+            ->deferLoading()
+            ->paginated([10, 25, 50, 100, 'all'])
+            ->defaultPaginationPageOption(50)
             ->columns([
-                //
+                TextColumn::make('name')
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable()
+                    ->weight('bold'),
             ])
             ->filters([
                 //

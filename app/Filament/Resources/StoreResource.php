@@ -42,6 +42,12 @@ class StoreResource extends Resource
     protected static ?int $navigationSort = 5;
     protected static ?string $pollingInterval = '1s';
     protected static bool $isLazy = false;
+    
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
+    }
+
 
     public static function getGlobalSearchResultDetails(Model $record): array
     {
@@ -92,8 +98,7 @@ class StoreResource extends Resource
             ->columns([
                 ImageColumn::make('store_image')
                     ->square()
-                    ->width(100)
-                    ->height(100)
+                    ->size(100)
                     ->toggleable(),
                 TextColumn::make('name')
                     ->searchable()

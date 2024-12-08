@@ -14,12 +14,13 @@ return new class extends Migration
         Schema::create('basket_items', function (Blueprint $table) {
             $table->id();
             $table->unsignedInteger('quantity')->index('basket_item_quantity')->nullable()->onDelete('cascade');
-            $table->timestamps();
 
             $table->unsignedBigInteger('market_basket_id')->nullable()->index('basket_item_market_basket_id');
             $table->foreign('market_basket_id')->references('id')->on('market_baskets')->onDelete('cascade');
             $table->unsignedBigInteger('product_id')->nullable()->index('basket_item_product_id');
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+            $table->timestamps();
+
         });
     }
 

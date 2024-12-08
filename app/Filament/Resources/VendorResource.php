@@ -39,6 +39,12 @@ class VendorResource extends Resource
     protected static ?string $pollingInterval = '1s';
     protected static bool $isLazy = false;
 
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
+    }
+
+
     public static function getGlobalSearchResultDetails(Model $record): array
     {
         return [
@@ -89,10 +95,9 @@ class VendorResource extends Resource
         ->paginated([10, 25, 50, 100, 'all'])
         ->defaultPaginationPageOption(50)
             ->columns([
-                ImageColumn::make('store_image')
+                ImageColumn::make('vendor_image')
                     ->square()
-                    ->width(100)
-                    ->height(100)
+                    
                     ->toggleable(),
                 TextColumn::make('name')
                     ->searchable()

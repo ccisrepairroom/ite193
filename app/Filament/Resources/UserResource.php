@@ -135,7 +135,7 @@ class UserResource extends Resource
             ->columns([
                 ImageColumn::make('profile_image')
                     ->circular()
-                    ->size(50)
+                
                     ->toggleable(),
                 TextColumn::make('name')
                     ->searchable()
