@@ -22,6 +22,9 @@ use Filament\Tables\Columns\IconColumn;
 use Spatie\Permission\Models\Role;
 use Carbon\Carbon;
 use Filament\Tables\Actions\ForceDeleteAction;
+use Filament\Tables\Actions\DeleteAction;
+
+
 
 
 class UserResource extends Resource
@@ -107,6 +110,8 @@ class UserResource extends Resource
     public static function table(Tables\Table $table): Tables\Table
     {
         return $table
+            ->paginated([10, 25, 50, 100, 'all'])
+            ->defaultPaginationPageOption(50)
         
             ->query(User::query())
             ->columns([
@@ -153,6 +158,8 @@ class UserResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                DeleteAction::make()
+                ->successNotificationTitle('User deleted'),
                 ForceDeleteAction::make(),
             ])
             ->bulkActions([
