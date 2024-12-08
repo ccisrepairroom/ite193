@@ -21,6 +21,7 @@ use App\Filament\Widgets\UserStatsWidget;
 use App\Filament\Widgets\EquipmentStatusChart;
 use App\Filament\Widgets\EquipmentsPerCategory;
 use App\Filament\Widgets\FacilityPerFacilityType;
+use App\Filament\Auth\Register;
 
 
 class AdminPanelProvider extends PanelProvider
@@ -33,6 +34,7 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
+            ->registration(Register::class)
             ->breadcrumbs(false)
             ->viteTheme('resources/css/filament/admin/theme.css')
             ->colors([

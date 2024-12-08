@@ -13,6 +13,7 @@ use BezhanSalleh\FilamentShield\Traits\HasPanelShield;
 use Filament\Models\Contracts\FilamentUser;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Route;
+use Spatie\Permission\Models\Role;
 
 class User extends Authenticatable
 {
@@ -61,6 +62,11 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        //'role_id',
+        'contact_number',
+        'profile_image',
+        'is_frequent_shopper',
+        'role_id',
         'password',
     ];
 
