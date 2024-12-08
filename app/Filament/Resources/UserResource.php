@@ -19,8 +19,12 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\FileUpload;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\IconColumn;
+use Filament\Forms\Components\Grid;
 use Spatie\Permission\Models\Role;
 use Carbon\Carbon;
+use Filament\Support\Enums\VerticalAlignment;
+
+use Filament\Tables\Columns\Layout\Split;
 use Filament\Tables\Actions\ForceDeleteAction;
 use Filament\Tables\Actions\DeleteAction;
 
@@ -57,11 +61,24 @@ class UserResource extends Resource
 
     public static function form(Form $form): Form
     {
-        return $form->schema([
+        
+        return $form
+        
+        
+        ->schema([
+            Grid::make([
+                'default' => 1,
+                'sm' => 2,
+                'md' => 3,
+                'lg' => 4,
+                'xl' => 6,
+                '2xl' => 8,
+            ]),
             Section::make()
                 ->schema([
                     FileUpload::make('profile_image')
-                        ->avatar(),
+                        ->avatar()
+                        ->preserveFileNames(),
                     TextInput::make('name')
                         ->required()
                         ->maxLength(255)
@@ -77,18 +94,17 @@ class UserResource extends Resource
                             'unique' => 'Email already exists',
                         ])
                         ->placeholder('Eg., clairenakila@gmail.com'),
+                    
                     TextInput::make('password')
                         ->password()
                         ->confirmed()
                         ->required()
                         ->revealable()
-                        ->dehydrateStateUsing(fn($state) => Hash::make($state))
-                        ->visible(fn($livewire) => $livewire instanceof Pages\CreateUser),
+                        ->dehydrateStateUsing(fn($state) => Hash::make($state)),
                     TextInput::make('password_confirmation')
                         ->password()
                         ->requiredWith('password')
-                        ->revealable()
-                        ->visible(fn($livewire) => $livewire instanceof Pages\CreateUser),
+                        ->revealable(),
                     TextInput::make('contact_number')
                         ->label('Contact Number')
                         ->required()
@@ -111,14 +127,15 @@ class UserResource extends Resource
     public static function table(Tables\Table $table): Tables\Table
     {
         return $table
-
+            ->deferLoading()
             ->paginated([10, 25, 50, 100, 'all'])
             ->defaultPaginationPageOption(50)
-        
+           
             ->query(User::query())
             ->columns([
                 ImageColumn::make('profile_image')
                     ->circular()
+                    ->size(50)
                     ->toggleable(),
                 TextColumn::make('name')
                     ->searchable()
@@ -144,6 +161,7 @@ class UserResource extends Resource
                 TextColumn::make('contact_number')
                     ->searchable()
                     ->toggleable()
+                    ->grow(false)
                     ->sortable(),
                 IconColumn::make('is_frequent_shopper')
                     ->icon(fn($state) => $state ? 'heroicon-o-check' : 'heroicon-o-x-circle')
@@ -154,6 +172,7 @@ class UserResource extends Resource
                     ->dateTime()
                     ->toggleable()
                     ->sortable(),
+                
             ])
             ->filters([
                
@@ -171,6 +190,7 @@ class UserResource extends Resource
                 BulkAction::make('delete')
                 ->action(fn($records) => $records->each->delete())
                 ->requiresConfirmation()
+                ->color('danger')
                 ->label('Delete Selected'),
             ]);
     }

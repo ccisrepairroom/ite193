@@ -12,6 +12,7 @@
         "bezhansalleh/filament-shield": "^3.2",
         "eightynine/filament-approvals": "^3.1",
         "eightynine/filament-excel-import": "^3.1",
+        "faisal50x/blade-ionicons": "^1.0",
         "filament/filament": "3.2",
         "filament/infolists": "3.2",
         "guzzlehttp/guzzle": "^7.2",
@@ -20,7 +21,8 @@
         "laravel/tinker": "^2.8",
         "pboivin/filament-peek": "2.0",
         "psr/simple-cache": "2.0",
-        "pxlrbt/filament-excel": "^2.3"
+        "pxlrbt/filament-excel": "^2.3",
+        "ryangjchandler/blade-tabler-icons": "^2.3"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

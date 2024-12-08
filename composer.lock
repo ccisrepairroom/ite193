@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b5f5caac1ca1aa8b03fe19718238da46",
+    "content-hash": "3923ed0143104e3098670c5852b1970b",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -1542,6 +1542,72 @@
                 "source": "https://github.com/ezyang/htmlpurifier/tree/v4.17.0"
             },
             "time": "2023-11-17T15:01:25+00:00"
+        },
+        {
+            "name": "faisal50x/blade-ionicons",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Foysal50x/blade-ionicons.git",
+                "reference": "5987990cc9feea08e57a3bf1790fa2be61bbcb0b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Foysal50x/blade-ionicons/zipball/5987990cc9feea08e57a3bf1790fa2be61bbcb0b",
+                "reference": "5987990cc9feea08e57a3bf1790fa2be61bbcb0b",
+                "shasum": ""
+            },
+            "require": {
+                "blade-ui-kit/blade-icons": "^1.1",
+                "illuminate/support": "^10.0|^11.0",
+                "php": "^8.1"
+            },
+            "require-dev": {
+                "codeat3/blade-icon-generation-helpers": "^0.8.0",
+                "orchestra/testbench": "^8.0|^9.0",
+                "phpunit/phpunit": "^10.5|^11.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "BladeIonicons": "Faisal50x\\BladeIonicons\\BladeIoniconsFacade"
+                    },
+                    "providers": [
+                        "Faisal50x\\BladeIonicons\\BladeIoniconsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Faisal50x\\BladeIonicons\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Faisal Ahmed",
+                    "email": "foysal20x@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A package to easily make use of ionicons in your Laravel Blade views.",
+            "homepage": "https://github.com/faisal50x/blade-ionicons",
+            "keywords": [
+                "blade",
+                "blade-ionicons",
+                "faisal50x",
+                "ionicons",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/Foysal50x/blade-ionicons/issues",
+                "source": "https://github.com/Foysal50x/blade-ionicons/tree/v1.0.0"
+            },
+            "time": "2024-05-30T14:23:13+00:00"
         },
         {
             "name": "filament/actions",
@@ -5911,6 +5977,68 @@
                 }
             ],
             "time": "2023-02-14T16:54:54+00:00"
+        },
+        {
+            "name": "ryangjchandler/blade-tabler-icons",
+            "version": "v2.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ryangjchandler/blade-tabler-icons.git",
+                "reference": "cd359f5d3b406a982dae1aaaf121d84067576a2e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ryangjchandler/blade-tabler-icons/zipball/cd359f5d3b406a982dae1aaaf121d84067576a2e",
+                "reference": "cd359f5d3b406a982dae1aaaf121d84067576a2e",
+                "shasum": ""
+            },
+            "require": {
+                "blade-ui-kit/blade-icons": "^1.5",
+                "illuminate/support": "^10.0 || ^11.0",
+                "php": "^8.1"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.14",
+                "orchestra/testbench": "^8.0 || ^9.0",
+                "phpunit/phpunit": "^9.5.10 || ^10.5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "RyanChandler\\TablerIcons\\BladeTablerIconsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "RyanChandler\\TablerIcons\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ryan Chandler",
+                    "email": "support@ryangjchandler.co.uk",
+                    "homepage": "https://ryangjchandler.co.uk",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A package to easily make use of Tabler icons in your Laravel Blade views.",
+            "homepage": "https://github.com/ryangjchandler/blade-tabler-icons",
+            "keywords": [
+                "blade",
+                "laravel",
+                "tabler"
+            ],
+            "support": {
+                "issues": "https://github.com/ryangjchandler/blade-tabler-icons/issues",
+                "source": "https://github.com/ryangjchandler/blade-tabler-icons/tree/v2.3.0"
+            },
+            "time": "2024-03-12T23:54:24+00:00"
         },
         {
             "name": "spatie/color",

@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('vendor_image')->index('vendor_vendor_image')->nullable()->onDelete('cascade');
             $table->string('location')->index('vendor_location')->nullable()->onDelete('cascade');
             $table->string('contact_number')->index('vendor_contact_number')->nullable()->onDelete('cascade');
+            $table->timestamps();
+
 
 
          
