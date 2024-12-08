@@ -8,6 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class ProductType extends Model
 {
     use HasFactory;
+    // Cast the `product_type_id` field to an array or JSON
+    protected $casts = [
+        'product_type_id' => 'array',  // For storing it as an array (in case you're using JSON column)
+    ];
     protected $fillable = [
         'name',
     ];
@@ -20,4 +24,7 @@ class ProductType extends Model
     {
         return $this->hasMany(Product::class, 'product_type_id');
     }
+
+    
+
 }

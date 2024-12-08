@@ -37,8 +37,9 @@ class AdminPanelProvider extends PanelProvider
             ->registration(Register::class)
             ->breadcrumbs(false)
             ->topNavigation()
-            ->brandLogo(asset('images/puregold_logo.png'))
-            ->brandLogoHeight('4rem')
+            ->favicon(asset('images/favicon.png'))
+            ->brandLogo(asset('images/logo.png'))
+            ->brandLogoHeight('2rem')
             ->viteTheme('resources/css/filament/admin/theme.css')
             ->colors([
                 'primary' => Color::Green,

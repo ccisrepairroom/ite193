@@ -15,7 +15,8 @@ class SubProductType extends Model
     ];
     public function productType()
     {
-        return $this->belongsTo(ProductType::class, 'product_type_id');
+        return $this->belongsToMany(ProductType::class, 'product_type_id');
     }
+    
 
 }
