@@ -92,6 +92,7 @@ class UserResource extends Resource
                     TextInput::make('contact_number')
                         ->label('Contact Number')
                         ->required()
+                        ->tel()
                         ->maxLength(11)
                         ->placeholder('11 digits only. Eg., 09918895966')
                         ->numeric()
@@ -110,6 +111,7 @@ class UserResource extends Resource
     public static function table(Tables\Table $table): Tables\Table
     {
         return $table
+
             ->paginated([10, 25, 50, 100, 'all'])
             ->defaultPaginationPageOption(50)
         
@@ -157,7 +159,10 @@ class UserResource extends Resource
                
             ])
             ->actions([
+                Tables\Actions\ViewAction::make()
+                ->color('warning'),
                 Tables\Actions\EditAction::make(),
+                //->slideOver(),
                 DeleteAction::make()
                 ->successNotificationTitle('User deleted'),
                 ForceDeleteAction::make(),
@@ -179,8 +184,8 @@ class UserResource extends Resource
     {
         return [
             'index' => Pages\ListUsers::route('/'),
-            'create' => Pages\CreateUser::route('/create'),
-            'edit' => Pages\EditUser::route('/{record}/edit'),
+            //'create' => Pages\CreateUser::route('/create'),
+            //'edit' => Pages\EditUser::route('/{record}/edit'),
         ];
     }
 }
